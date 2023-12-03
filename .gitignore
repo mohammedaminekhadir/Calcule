@@ -1,3 +1,6 @@
+**/andriod/key.properties
+**/andriod/app/upload-keystore.jks
+
 # Miscellaneous
 *.class
 *.log
