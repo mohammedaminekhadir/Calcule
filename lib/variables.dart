@@ -19,21 +19,5 @@ bool nums1tol = false;
 List operationsl = [];
 String textre = '';
 double resultfontsize = 40;
-
-List test = [
-  num1,
-  num2,
-  nums1,
-  nums2,
-  result,
-  operation,
-  past,
-  newvalue,
-  divis,
-  foit,
-  foit,
-  moin,
-  plus,
-  egale,
-  nums1tol
-];
+bool reset = false;
+bool switchi = false;

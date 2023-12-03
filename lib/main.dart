@@ -27,19 +27,41 @@ class _CalculeState extends State<Calcule> {
   @override
   build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.black,
+        backgroundColor: switchi == false ? Colors.black : Colors.white,
         appBar: AppBar(
-          centerTitle: true,
-          title: Title(
-            color: Colors.black,
-            child: const Text(
-              'Calcule',
-              style: TextStyle(fontWeight: FontWeight.w600, fontSize: 40),
-            ),
+          title: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Switch(
+                  activeThumbImage: AssetImage(images.sun),
+                  activeColor: Colors.black26,
+                  activeTrackColor: Colors.white,
+                  inactiveThumbImage: AssetImage(images.moon),
+                  inactiveTrackColor: Colors.black,
+                  value: switchi,
+                  onChanged: (value) {
+                    setState(() {
+                      switchi = !switchi;
+                    });
+                  }),
+              Title(
+                color: Colors.black,
+                child: Text(
+                  'Calcule',
+                  style: TextStyle(
+                      color: switchi == false ? Colors.black : Colors.white,
+                      fontWeight: FontWeight.w600,
+                      fontSize: 40),
+                ),
+              ),
+              Container(
+                width: 40,
+              )
+            ],
           ),
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-          backgroundColor: Colors.redAccent,
+          backgroundColor: switchi == false ? Colors.redAccent : Colors.blue,
         ),
         body:
             //!super.Column
@@ -49,9 +71,12 @@ class _CalculeState extends State<Calcule> {
             Container(
                 margin: const EdgeInsets.only(top: 20, right: 10, left: 10),
                 decoration: BoxDecoration(
-                    color: Colors.white12,
+                    color: switchi == false ? Colors.white12 : Colors.black26,
                     borderRadius: BorderRadius.circular(20),
-                    border: Border.all(color: Colors.white38, width: 5)),
+                    border: Border.all(
+                        color:
+                            switchi == false ? Colors.white38 : Colors.black38,
+                        width: 5)),
                 child:
                     //?Column/Container1/Column
                     Column(children: [
@@ -65,10 +90,13 @@ class _CalculeState extends State<Calcule> {
                               child: Text(result.toString(),
                                   textAlign: TextAlign.right,
                                   style: TextStyle(
-                                      color: Colors.white,
+                                      color: switchi == false
+                                          ? Colors.white
+                                          : Colors.black,
                                       fontSize: resultfontsize)))),
                   //#Column/Container1/Column/Divider
-                  const Divider(
+                  Divider(
+                    color: switchi == false ? Colors.white38 : Colors.black38,
                     height: 10,
                   ),
                   //#Column/Container1/Column/Row
@@ -81,7 +109,10 @@ class _CalculeState extends State<Calcule> {
                           alignment: Alignment.centerLeft,
                           child: Text(text,
                               style: TextStyle(
-                                  color: Colors.white, fontSize: textfontSize)),
+                                  color: switchi == false
+                                      ? Colors.white
+                                      : Colors.black,
+                                  fontSize: textfontSize)),
                         )
                       ])
                 ])),
@@ -90,8 +121,10 @@ class _CalculeState extends State<Calcule> {
             //!Column/Row
             Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
               MaterialButton(
-                  splashColor: Colors.blueAccent.shade700,
-                  color: Colors.blue,
+                  splashColor: switchi == false
+                      ? Colors.blueAccent.shade700
+                      : Colors.redAccent.shade700,
+                  color: switchi == false ? Colors.blue : Colors.red,
                   height: 80,
                   minWidth: 230,
                   shape: RoundedRectangleBorder(
@@ -105,8 +138,10 @@ class _CalculeState extends State<Calcule> {
                       style: TextStyle(
                           fontSize: 50, fontWeight: FontWeight.w600))),
               MaterialButton(
-                  splashColor: Colors.blueAccent.shade700,
-                  color: Colors.blue,
+                  splashColor: switchi == false
+                      ? Colors.blueAccent.shade700
+                      : Colors.redAccent.shade700,
+                  color: switchi == false ? Colors.blue : Colors.red,
                   height: 80,
                   minWidth: 140,
                   shape: RoundedRectangleBorder(
@@ -114,6 +149,11 @@ class _CalculeState extends State<Calcule> {
                   onPressed: () {
                     setState(() {
                       deletf();
+                    });
+                  },
+                  onLongPress: () {
+                    setState(() {
+                      ac();
                     });
                   },
                   child: Image.asset(
@@ -132,11 +172,13 @@ class _CalculeState extends State<Calcule> {
                 children: [
                   //Column/Column/Row1/MaterialButton1
                   MaterialButton(
-                      splashColor: Colors.blue,
+                      splashColor: switchi == false ? Colors.blue : Colors.red,
+                      color: switchi == false
+                          ? Colors.blueAccent.shade700
+                          : Colors.redAccent.shade700,
                       height: 80,
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(20)),
-                      color: Colors.blueAccent.shade700,
                       onPressed: () {
                         setState(() {
                           one();
@@ -147,11 +189,13 @@ class _CalculeState extends State<Calcule> {
                               fontSize: 50, fontWeight: FontWeight.w600))),
                   //Column/Column/Row1/MaterialButton2
                   MaterialButton(
-                      splashColor: Colors.blue,
+                      splashColor: switchi == false ? Colors.blue : Colors.red,
+                      color: switchi == false
+                          ? Colors.blueAccent.shade700
+                          : Colors.redAccent.shade700,
                       height: 80,
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(20)),
-                      color: Colors.blueAccent.shade700,
                       onPressed: () {
                         setState(() {
                           two();
@@ -162,11 +206,13 @@ class _CalculeState extends State<Calcule> {
                               fontSize: 50, fontWeight: FontWeight.w600))),
                   //Column/Column/Row1/MaterialButton3
                   MaterialButton(
-                      splashColor: Colors.blue,
+                      splashColor: switchi == false ? Colors.blue : Colors.red,
+                      color: switchi == false
+                          ? Colors.blueAccent.shade700
+                          : Colors.redAccent.shade700,
                       height: 80,
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(20)),
-                      color: Colors.blueAccent.shade700,
                       onPressed: () {
                         setState(() {
                           three();
@@ -177,11 +223,14 @@ class _CalculeState extends State<Calcule> {
                               fontSize: 50, fontWeight: FontWeight.w600))),
                   //Column/Column/Row1/MaterialButton4
                   MaterialButton(
-                      splashColor: Colors.blueAccent.shade700,
+                      splashColor: switchi == false
+                          ? Colors.blueAccent.shade700
+                          : Colors.redAccent.shade700,
+                      color: switchi == false ? Colors.blue : Colors.red,
                       height: 80,
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(20)),
-                      color: Colors.blue,
+
                       //!divis
                       onPressed: () {
                         setState(() {
@@ -200,11 +249,13 @@ class _CalculeState extends State<Calcule> {
                 children: [
                   //Column/Column/Row2/MaterialButton1
                   MaterialButton(
-                      splashColor: Colors.blue,
+                      splashColor: switchi == false ? Colors.blue : Colors.red,
+                      color: switchi == false
+                          ? Colors.blueAccent.shade700
+                          : Colors.redAccent.shade700,
                       height: 80,
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(20)),
-                      color: Colors.blueAccent.shade700,
                       onPressed: () {
                         setState(() {
                           four();
@@ -215,11 +266,13 @@ class _CalculeState extends State<Calcule> {
                               fontSize: 50, fontWeight: FontWeight.w600))),
                   //Column/Column/Row2/MaterialButton2
                   MaterialButton(
-                      splashColor: Colors.blue,
+                      splashColor: switchi == false ? Colors.blue : Colors.red,
+                      color: switchi == false
+                          ? Colors.blueAccent.shade700
+                          : Colors.redAccent.shade700,
                       height: 80,
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(20)),
-                      color: Colors.blueAccent.shade700,
                       onPressed: () {
                         setState(() {
                           five();
@@ -230,11 +283,13 @@ class _CalculeState extends State<Calcule> {
                               fontSize: 50, fontWeight: FontWeight.w600))),
                   //Column/Column/Row2/MaterialButton3
                   MaterialButton(
-                      splashColor: Colors.blue,
+                      splashColor: switchi == false ? Colors.blue : Colors.red,
+                      color: switchi == false
+                          ? Colors.blueAccent.shade700
+                          : Colors.redAccent.shade700,
                       height: 80,
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(20)),
-                      color: Colors.blueAccent.shade700,
                       onPressed: () {
                         setState(() {
                           six();
@@ -245,11 +300,13 @@ class _CalculeState extends State<Calcule> {
                               fontSize: 50, fontWeight: FontWeight.w600))),
                   //Column/Column/Row2/MaterialButton4
                   MaterialButton(
-                      splashColor: Colors.blueAccent.shade700,
+                      splashColor: switchi == false
+                          ? Colors.blueAccent.shade700
+                          : Colors.redAccent.shade700,
+                      color: switchi == false ? Colors.blue : Colors.red,
                       height: 80,
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(20)),
-                      color: Colors.blue,
                       onPressed: () {
                         //!foit
                         setState(() {
@@ -269,11 +326,13 @@ class _CalculeState extends State<Calcule> {
                 children: [
                   //Column/Column/Row3/MaterialButton1
                   MaterialButton(
-                      splashColor: Colors.blue,
+                      splashColor: switchi == false ? Colors.blue : Colors.red,
+                      color: switchi == false
+                          ? Colors.blueAccent.shade700
+                          : Colors.redAccent.shade700,
                       height: 80,
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(20)),
-                      color: Colors.blueAccent.shade700,
                       onPressed: () {
                         setState(() {
                           seven();
@@ -284,11 +343,13 @@ class _CalculeState extends State<Calcule> {
                               fontSize: 50, fontWeight: FontWeight.w600))),
                   //Column/Column/Row3/MaterialButton2
                   MaterialButton(
-                      splashColor: Colors.blue,
+                      splashColor: switchi == false ? Colors.blue : Colors.red,
+                      color: switchi == false
+                          ? Colors.blueAccent.shade700
+                          : Colors.redAccent.shade700,
                       height: 80,
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(20)),
-                      color: Colors.blueAccent.shade700,
                       onPressed: () {
                         setState(() {
                           eight();
@@ -299,11 +360,13 @@ class _CalculeState extends State<Calcule> {
                               fontSize: 50, fontWeight: FontWeight.w600))),
                   //Column/Column/Row3/MaterialButton3
                   MaterialButton(
-                      splashColor: Colors.blue,
+                      splashColor: switchi == false ? Colors.blue : Colors.red,
+                      color: switchi == false
+                          ? Colors.blueAccent.shade700
+                          : Colors.redAccent.shade700,
                       height: 80,
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(20)),
-                      color: Colors.blueAccent.shade700,
                       onPressed: () {
                         setState(() {
                           nine();
@@ -314,11 +377,13 @@ class _CalculeState extends State<Calcule> {
                               fontSize: 50, fontWeight: FontWeight.w600))),
                   //Column/Column/Row3/MaterialButton4
                   MaterialButton(
-                      splashColor: Colors.blueAccent.shade700,
+                      splashColor: switchi == false
+                          ? Colors.blueAccent.shade700
+                          : Colors.redAccent.shade700,
+                      color: switchi == false ? Colors.blue : Colors.red,
                       height: 80,
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(20)),
-                      color: Colors.blue,
                       onPressed: () {
                         //!moin
                         setState(() {
@@ -338,11 +403,13 @@ class _CalculeState extends State<Calcule> {
                 children: [
                   //Column/Column/Row4/MaterialButton1
                   MaterialButton(
-                      splashColor: Colors.blueAccent.shade700,
+                      splashColor: switchi == false
+                          ? Colors.blueAccent.shade700
+                          : Colors.redAccent.shade700,
+                      color: switchi == false ? Colors.blue : Colors.red,
                       height: 80,
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(20)),
-                      color: Colors.blue,
                       onPressed: () {
                         setState(() {
                           point();
@@ -353,11 +420,13 @@ class _CalculeState extends State<Calcule> {
                               fontSize: 50, fontWeight: FontWeight.w600))),
                   //Column/Column/Row4/MaterialButton2
                   MaterialButton(
-                      splashColor: Colors.blue,
+                      splashColor: switchi == false ? Colors.blue : Colors.red,
+                      color: switchi == false
+                          ? Colors.blueAccent.shade700
+                          : Colors.redAccent.shade700,
                       height: 80,
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(20)),
-                      color: Colors.blueAccent.shade700,
                       onPressed: () {
                         setState(() {
                           zero();
@@ -368,11 +437,13 @@ class _CalculeState extends State<Calcule> {
                               fontSize: 50, fontWeight: FontWeight.w600))),
                   //Column/Column/Row4/MaterialButton3
                   MaterialButton(
-                      splashColor: Colors.blueAccent.shade700,
+                      splashColor: switchi == false
+                          ? Colors.blueAccent.shade700
+                          : Colors.redAccent.shade700,
+                      color: switchi == false ? Colors.blue : Colors.red,
                       height: 80,
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(20)),
-                      color: egale == true ? Colors.deepOrange : Colors.blue,
                       onPressed: () {
                         //!egale
                         setState(() {
@@ -384,11 +455,13 @@ class _CalculeState extends State<Calcule> {
                               fontSize: 50, fontWeight: FontWeight.w600))),
                   //Column/Column/Row4/MaterialButton4
                   MaterialButton(
-                      splashColor: Colors.blueAccent.shade700,
+                      splashColor: switchi == false
+                          ? Colors.blueAccent.shade700
+                          : Colors.redAccent.shade700,
+                      color: switchi == false ? Colors.blue : Colors.red,
                       height: 80,
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(20)),
-                      color: Colors.blue,
                       onPressed: () {
                         //!pluse
                         setState(() {

@@ -30,6 +30,9 @@ void textsize() {
 }
 
 void deletf() {
+  if (text.length < 2) {
+    ac();
+  }
   if (text.length < 50) {
     if (text == 'impossible') {
       textfontSize = 12;
@@ -59,13 +62,6 @@ void deletf() {
   if (text.length < 21) {
     textfontSize = 30;
   }
-  // if (text.isEmpty) {
-  //   result = 0;
-  //   num1 = 0;
-  //   num2 = 0;
-  //   nums1 = '';
-  //   nums2 = '';
-  // }
   if (text.isNotEmpty) {
     text = text.replaceRange(text.length - 1, null, '');
   }
@@ -110,25 +106,29 @@ void deletf() {
 }
 
 void ac() {
-  num1 = num.parse(nums1);
-  num2 = num.parse(nums2);
-  nums1 = '0';
-  nums2 = '0';
-  text = '';
-  result = 0;
-  newvalue = false;
-  operation = false;
-  past = false;
-  divis = false;
-  foit = false;
-  moin = false;
-  plus = false;
-  egale = false;
-  textfontSize = 30;
-  stop = false;
-  numl = [];
-  nums1tol = false;
-  operationsl = [];
-  textre = '';
-  resultfontsize = 40;
+  reset = true;
+  if (text.isNotEmpty || result != 0) {
+    text = '';
+    newvalue = false;
+    operation = false;
+    past = false;
+    divis = false;
+    foit = false;
+    moin = false;
+    plus = false;
+    egale = false;
+    textfontSize = 30;
+    stop = false;
+    numl = [];
+    nums1tol = false;
+    operationsl = [];
+    textre = '';
+    resultfontsize = 40;
+    text = '';
+    result = 0;
+    nums1 = '0';
+    nums2 = '0';
+    num1 = num.parse(nums1);
+    num2 = num.parse(nums2);
+  }
 }

@@ -7,8 +7,8 @@ void one() {
     textre = text;
     if (newvalue == true) {
       nums2 += '1';
-
       num2 = num.parse(nums2);
+
       egale = true;
     } else if (operation == false) {
       nums1 += '1';
