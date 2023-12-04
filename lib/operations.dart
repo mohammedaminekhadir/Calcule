@@ -3,7 +3,12 @@ import 'tools.dart';
 
 void divisf() {
   if (text.isNotEmpty) {
-    operationsl.add('+');
+    divis = true;
+    foit = false;
+    moin = false;
+    plus = false;
+    textsize();
+    operationsl.add('/');
     if (nums1tol == false) {
       numl.add(nums1);
       nums1tol = true;
@@ -26,6 +31,7 @@ void divisf() {
       } else if (plus == true) {
         result = num1 + num2;
       }
+      lasttext = '';
       if (reset == true) {
         num1 = num.parse(nums1);
         num2 = num.parse(nums2);
@@ -38,39 +44,29 @@ void divisf() {
         } else if (plus == true) {
           result = num1 + num2;
         }
-        if (reset == true) {
-          num1 = num.parse(nums1);
-          num2 = num.parse(nums2);
-          if (divis == true) {
-            result = num1 / num2;
-          } else if (foit == true) {
-            result = num1 * num2;
-          } else if (moin == true) {
-            result = num1 - num2;
-          } else if (plus == true) {
-            result = num1 + num2;
-          }
-          reset = false;
-        }
+        lasttext = '';
         reset = false;
       }
-      numl.add(nums2);
-      num1 = result;
-      newvalue = true;
-      nums2 = '0';
-      num2 = num.parse(nums2);
+      reset = false;
     }
-    divis = true;
-    foit = false;
-    moin = false;
-    plus = false;
-    textsize();
+    numl.add(nums2);
+    num1 = result;
+    newvalue = true;
+    // if (text.split('').last.contains(RegExp(r'[/]')) == false) {
+    nums2 = '0';
+    num2 = num.parse(nums2);
+    // }
   }
 }
 
 void foitf() {
   if (text.isNotEmpty) {
-    operationsl.add('+');
+    divis = false;
+    foit = true;
+    moin = false;
+    plus = false;
+    textsize();
+    operationsl.add('x');
     if (nums1tol == false) {
       numl.add(nums1);
       nums1tol = true;
@@ -93,6 +89,7 @@ void foitf() {
       } else if (plus == true) {
         result = num1 + num2;
       }
+      lasttext = '';
       if (reset == true) {
         num1 = num.parse(nums1);
         num2 = num.parse(nums2);
@@ -105,39 +102,26 @@ void foitf() {
         } else if (plus == true) {
           result = num1 + num2;
         }
-        if (reset == true) {
-          num1 = num.parse(nums1);
-          num2 = num.parse(nums2);
-          if (divis == true) {
-            result = num1 / num2;
-          } else if (foit == true) {
-            result = num1 * num2;
-          } else if (moin == true) {
-            result = num1 - num2;
-          } else if (plus == true) {
-            result = num1 + num2;
-          }
-          reset = false;
-        }
+        lasttext = '';
         reset = false;
       }
-      numl.add(nums2);
-      num1 = result;
-      newvalue = true;
-      nums2 = '0';
-      num2 = num.parse(nums2);
     }
-    divis = false;
-    foit = true;
-    moin = false;
-    plus = false;
-    textsize();
+    numl.add(nums2);
+    num1 = result;
+    newvalue = true;
+    nums2 = '0';
+    num2 = num.parse(nums2);
   }
 }
 
 void moinf() {
   if (text.isNotEmpty) {
-    operationsl.add('+');
+    divis = false;
+    foit = false;
+    moin = true;
+    plus = false;
+    textsize();
+    operationsl.add('-');
     if (nums1tol == false) {
       numl.add(nums1);
       nums1tol = true;
@@ -160,6 +144,7 @@ void moinf() {
       } else if (plus == true) {
         result = num1 + num2;
       }
+      lasttext = '';
       if (reset == true) {
         num1 = num.parse(nums1);
         num2 = num.parse(nums2);
@@ -172,6 +157,7 @@ void moinf() {
         } else if (plus == true) {
           result = num1 + num2;
         }
+        lasttext = '';
         reset = false;
       }
 
@@ -181,17 +167,16 @@ void moinf() {
       nums2 = '0';
       num2 = num.parse(nums2);
     }
-
-    divis = false;
-    foit = false;
-    moin = true;
-    plus = false;
-    textsize();
   }
 }
 
 void plusf() {
   if (text.isNotEmpty) {
+    divis = false;
+    foit = false;
+    moin = false;
+    plus = true;
+    textsize();
     operationsl.add('+');
     if (nums1tol == false) {
       numl.add(nums1);
@@ -215,6 +200,7 @@ void plusf() {
       } else if (plus == true) {
         result = num1 + num2;
       }
+      lasttext = '';
       if (reset == true) {
         num1 = num.parse(nums1);
         num2 = num.parse(nums2);
@@ -227,6 +213,7 @@ void plusf() {
         } else if (plus == true) {
           result = num1 + num2;
         }
+        lasttext = '';
         reset = false;
       }
       numl.add(nums2);
@@ -235,11 +222,6 @@ void plusf() {
       nums2 = '0';
       num2 = num.parse(nums2);
     }
-    divis = false;
-    foit = false;
-    moin = false;
-    plus = true;
-    textsize();
   }
 }
 
@@ -260,11 +242,9 @@ void egalef() {
         result = num1 + num2;
       }
       egale = false;
+      results.add(result);
     } else {
       result = num.parse(text);
-    }
-    if (nums2.isNotEmpty) {
-      numl.add(nums2);
     }
   }
   if (result.toString().length > 16) {
@@ -287,11 +267,16 @@ void egalef() {
     } else if (plus == true) {
       result = num1 + num2;
     }
+    lasttext = '';
     reset = false;
+    results.add(result);
   }
   if (text.isNotEmpty) {
     if (text.split('').last.contains('.')) {
       text = text.replaceRange(text.length - 1, null, '');
     }
+    numl.add(nums2);
+    print(numl);
+    print(operationsl);
   }
 }

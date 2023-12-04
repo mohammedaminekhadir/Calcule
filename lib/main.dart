@@ -440,10 +440,16 @@ class _CalculeState extends State<Calcule> {
                       splashColor: switchi == false
                           ? Colors.blueAccent.shade700
                           : Colors.redAccent.shade700,
-                      color: switchi == false ? Colors.blue : Colors.red,
                       height: 80,
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(20)),
+                      color: switchi == false
+                          ? egale == true
+                              ? Colors.deepOrange
+                              : Colors.blue
+                          : egale == true
+                              ? Colors.blue
+                              : Colors.deepOrange,
                       onPressed: () {
                         //!egale
                         setState(() {

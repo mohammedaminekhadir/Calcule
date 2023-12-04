@@ -30,6 +30,13 @@ void textsize() {
 }
 
 void deletf() {
+  if ((text.split('').last.contains(RegExp(r'[\+\-=x/]'))) == true) {
+    if (lasttext.length > 1) {
+      lasttext = lasttext.replaceRange(lasttext.length - 1, null, '');
+      num1 = num.parse(lasttext);
+      print(lasttext);
+    }
+  }
   if (text.length < 2) {
     ac();
   }
@@ -70,38 +77,31 @@ void deletf() {
   }
   if (nums2 == '') {
     num2 = 0;
-    if (numl.isNotEmpty) {
+  }
+  if (numl.isNotEmpty) {
+    if ((numl.last.contains(RegExp(r'[\+\-=x/]'))) == true) {
       num1 = num.parse(numl.last);
     }
-    if (text.isNotEmpty) {
-      if ((text.split('').last.contains(RegExp(r'[\+\-=x/]'))) == true) {
-        if (divis == true) {
-          result *= num.parse(numl[numl.length - 1]);
-        } else if (foit == true) {
-          result /= num.parse(numl[numl.length - 1]);
-        } else if (moin == true) {
-          result += num.parse(numl[numl.length - 1]);
-        } else if (plus == true) {
-          result -= num.parse(numl[numl.length - 1]);
-        }
-        num1 = result;
-        numl.removeAt(numl.length - 1);
+  }
+  if (text.isNotEmpty) {
+    if ((text.contains(RegExp(r'[\+\-=x/]')))) {
+      if (divis == true) {
+        result *= num.parse(numl[numl.length - 1]);
+      } else if (foit == true) {
+        result /= num.parse(numl[numl.length - 1]);
+      } else if (moin == true) {
+        result += num.parse(numl[numl.length - 1]);
+      } else if (plus == true) {
+        result -= num.parse(numl[numl.length - 1]);
       }
-    }
-
-    if (operationsl.isNotEmpty) {
-      if (operationsl[operationsl.length - 1] == '/') {
-        divis = true;
-      } else if (operationsl[operationsl.length - 1] == 'x') {
-        foit = true;
-      } else if (operationsl[operationsl.length - 1] == '-') {
-        moin = true;
-      } else if (operationsl[operationsl.length - 1] == '+') {
-        plus = true;
-      }
+      print(result);
+      num1 = result;
+      numl.removeAt(numl.length - 1);
     }
   } else {
-    num2 = num.parse(nums2);
+    if (nums2.isNotEmpty) {
+      num2 = num.parse(nums2);
+    }
   }
 }
 

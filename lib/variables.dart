@@ -21,3 +21,5 @@ String textre = '';
 double resultfontsize = 40;
 bool reset = false;
 bool switchi = false;
+List results = [];
+String lasttext = '';
