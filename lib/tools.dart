@@ -68,11 +68,17 @@ void deletf() {
   if (nums2.isNotEmpty) {
     nums2 = nums2.replaceRange(nums2.length - 1, nums2.length, '');
   }
+  print(nums2.runtimeType);
+  print(nums2);
   if (nums2 == '') {
     num2 = 0;
   }
   if (numl.isNotEmpty) {
     num1 = num.parse(numl.last);
+  }
+  if (lasteo.isNotEmpty) {
+    num1 = num.parse(lasteo.last);
+    lasteo.removeRange(lasteo.length - 2, lasteo.length - 1);
   }
   if (text.isNotEmpty) {
     if ((text.split('').last.contains(RegExp(r'[\+\-=x/]'))) == true) {
@@ -89,24 +95,14 @@ void deletf() {
       numl.removeAt(numl.length - 1);
     }
   }
-
-  if (operationsl.isNotEmpty) {
-    if (operationsl[operationsl.length - 1] == '/') {
-      divis = true;
-    } else if (operationsl[operationsl.length - 1] == 'x') {
-      foit = true;
-    } else if (operationsl[operationsl.length - 1] == '-') {
-      moin = true;
-    } else if (operationsl[operationsl.length - 1] == '+') {
-      plus = true;
-    }
-  } else {
+  if (nums2.isNotEmpty) {
     num2 = num.parse(nums2);
   }
 }
 
 void ac() {
   reset = true;
+  lasteo = [];
   if (text.isNotEmpty || result != 0) {
     text = '';
     newvalue = false;
@@ -124,7 +120,9 @@ void ac() {
     operationsl = [];
     textre = '';
     resultfontsize = 40;
-    text = '';
+    reset = false;
+    switchi = false;
+    zeron = false;
     result = 0;
     nums1 = '0';
     nums2 = '0';

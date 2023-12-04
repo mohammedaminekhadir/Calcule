@@ -22,3 +22,4 @@ double resultfontsize = 40;
 bool reset = false;
 bool switchi = false;
 bool zeron = false;
+List lasteo = [];
